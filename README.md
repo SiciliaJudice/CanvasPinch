@@ -23,3 +23,5 @@ Cheers!
 ## References
 
 The Paint code is based on *[DuarteCorporation Tutoriales](https://youtu.be/DBD7GpuKQxk)*
+
+The basics I am learning a lot from *[KDAB Introduction to Qt/QML](https://www.youtube.com/playlist?list=PL6CJYn40gN6hdNC1IGQZfVI707dh9DPRc)*
