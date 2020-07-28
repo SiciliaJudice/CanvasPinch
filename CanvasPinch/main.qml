@@ -20,7 +20,14 @@ ApplicationWindow {
             var ctx = getContext('2d');
             ctx.reset();
             myCanvas.requestPaint();
-        }
+        }//end: function clear()
+
+        Rectangle {
+            width: myCanvas.width
+            height: myCanvas.height
+            color: "lightblue"
+            z: -1
+        }//end: Rectangle
 
         Button {
             id: myButton
@@ -37,21 +44,32 @@ ApplicationWindow {
             }
         }//end: Button
 
-
-        MouseArea {
-            id: myMouseArea
+        PinchArea {
+            id: myPinchArea
             anchors.fill: parent
+            pinch.target: myCanvas
+            pinch.maximumScale: 10.0
+            pinch.minimumScale: 0.1
+            pinch.maximumRotation: 360
+            pinch.minimumRotation: -360
+            pinch.dragAxis: Pinch.XAndYAxis
 
-            onPressed: {
-                myCanvas.lastX = mouseX;
-                myCanvas.lastY = mouseY;
-            }
+            MouseArea {
+                id: myMouseArea
+                anchors.fill: parent
 
-            onPositionChanged: {
-                myCanvas.requestPaint();
-            }
+                onPressed: {
+                    myCanvas.lastX = mouseX;
+                    myCanvas.lastY = mouseY;
+                }
 
-        }//end: MouseArea
+                onPositionChanged: {
+                    myCanvas.requestPaint();
+                }
+
+            }//end: MouseArea
+
+        }//end: PinchArea
 
         onPaint: {
             var ctx = getContext('2d');
