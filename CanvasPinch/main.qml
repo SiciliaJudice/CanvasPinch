@@ -8,4 +8,42 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("Canvas Paint + PinchArea")
-}
+
+    Canvas {
+        id: myCanvas
+        anchors.fill: parent
+
+        property int lastX: 0
+        property int lastY: 0
+
+
+        MouseArea {
+            id: myMouseArea
+            anchors.fill: parent
+
+            onPressed: {
+                myCanvas.lastX = mouseX;
+                myCanvas.lastY = mouseY;
+            }
+
+            onPositionChanged: {
+                myCanvas.requestPaint();
+            }
+
+        }//emd: MouseArea
+
+        onPaint: {
+            var ctx = getContext('2d');
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = "orange"
+            ctx.beginPath();
+            ctx.moveTo( lastX, lastY );
+            lastX = myMouseArea.mouseX;
+            lastY = myMouseArea.mouseY;
+            ctx.lineTo( lastX, lastY );
+            ctx.stroke();
+        }//end: onPaint
+
+    }//end: Canvas
+
+}//END
