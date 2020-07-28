@@ -1,6 +1,8 @@
 # CanvasPinch
 QtQuick Application to show how to use a Canvas element with PinchArea.
 
+-------
+
 I have been using Qt QML recently and sometimes I find myself trying to solve small issues because of my lack of knowledge. So I decided to share these small issues whenever I manage to solve them because maybe someone else out there is having the same problem.  o/  Wave back if it's your case!
 
 In this example I was suffering to implement pinch gesture inside a Canvas element. I was able to scale and rotate it, but not to drag it. And I could not understand why or even find some clue on the internet. 
@@ -16,3 +18,8 @@ Please let me know if this helped you.
 And please, please, please, if I said something wrong just correct me! This is how I will keep learning!
 
 Cheers!
+
+-------
+## References
+
+The Paint code is based on *[DuarteCorporation Tutoriales](https://youtu.be/DBD7GpuKQxk)*
