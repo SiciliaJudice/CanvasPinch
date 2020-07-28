@@ -9,11 +9,27 @@ ApplicationWindow {
     height: 480
     title: qsTr("Canvas Paint + PinchArea")
 
+    Button {
+        id: myButton
+        text: 'Clear'
+        x: (root.width / 2.0) - (width / 2.0)
+        y: root.height - height - 5
+        z: myCanvas.z + 1
+
+        onClicked: {
+            myCanvas.clear();
+        }
+    }//end: Button
+
     Canvas {
         id: myCanvas
-        //anchors.fill: parent
-        width: root.width
-        height: root.height
+
+        property var canvasScale: 5
+        width: root.width * canvasScale
+        height: root.height * canvasScale
+
+        x: -((width - root.width) / 2.0)
+        y: -((height - root.height) / 2.0)
 
         property int lastX: 0
         property int lastY: 0
@@ -30,21 +46,6 @@ ApplicationWindow {
             color: "lightblue"
             z: -1
         }//end: Rectangle
-
-        Button {
-            id: myButton
-            text: 'Clear'
-            z: myCanvas.z + 1
-            anchors {
-                horizontalCenter: myCanvas.horizontalCenter
-                bottom: myCanvas.bottom
-                margins: 5
-            }
-
-            onClicked: {
-                myCanvas.clear();
-            }
-        }//end: Button
 
         PinchArea {
             id: myPinchArea
