@@ -16,6 +16,27 @@ ApplicationWindow {
         property int lastX: 0
         property int lastY: 0
 
+        function clear() {
+            var ctx = getContext('2d');
+            ctx.reset();
+            myCanvas.requestPaint();
+        }
+
+        Button {
+            id: myButton
+            text: 'Clear'
+            z: myCanvas.z + 1
+            anchors {
+                horizontalCenter: myCanvas.horizontalCenter
+                bottom: myCanvas.bottom
+                margins: 5
+            }
+
+            onClicked: {
+                myCanvas.clear();
+            }
+        }//end: Button
+
 
         MouseArea {
             id: myMouseArea
@@ -30,7 +51,7 @@ ApplicationWindow {
                 myCanvas.requestPaint();
             }
 
-        }//emd: MouseArea
+        }//end: MouseArea
 
         onPaint: {
             var ctx = getContext('2d');
