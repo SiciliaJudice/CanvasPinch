@@ -11,7 +11,9 @@ ApplicationWindow {
 
     Canvas {
         id: myCanvas
-        anchors.fill: parent
+        //anchors.fill: parent
+        width: root.width
+        height: root.height
 
         property int lastX: 0
         property int lastY: 0
